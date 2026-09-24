@@ -16,7 +16,7 @@ export default function SignUpPage() {
                 name,
                 phone
             })
-            const url = `${process.env.NEXT_PUBLIC_BASE_API_URL}/admins`
+            const url = `${process.env.NEXT_PUBLIC_BASE_API_URL}/customers`
             const response = await fetch(url, { //mengirim data ke server
                 method: "POST",
                 headers: {
@@ -28,7 +28,7 @@ export default function SignUpPage() {
             console.log(response)
             if (!response.ok) {//false
                 alert("gagal melakukan registrasi")
-                window.location.href = "/sign.in"
+                window.location.href = "/sign-up"
                 return;
             }
             const responseData = await response.json()
@@ -42,7 +42,7 @@ export default function SignUpPage() {
         <div className="w-full h-dvh bg-pink-100 p-3 flex items-center justify-center">
             <div className="bg-white p-10 w-full md:w-1/2 lg:w-1/3 rounded-lg">
                 <h1 className="text-center font-bold text-pink-800 text-2xl">
-                    Register Admin
+                    Register Customer
                 </h1>
 
                 <form className="my-3" onSubmit={handleSignUp}>

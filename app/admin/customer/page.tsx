@@ -155,6 +155,7 @@ export default async function CustomersPage(props: Props) {
 
                             <th className="px-6 py-4 w-16">No</th>
                             <th className="px-6 py-4">Name</th>
+                            <th className="px-6 py-4">UserName</th>
                             <th className="px-6 py-4">Phone</th>
                             <th className="px-6 py-4">Address</th>
                             <th className="px-6 py-4 w-40 text-center">Action</th>
@@ -179,6 +180,10 @@ export default async function CustomersPage(props: Props) {
 
                                 <td className="px-6 py-4 font-medium">
                                     {customer.name}
+                                </td>
+
+                                <td className="px-6 py-4 font-medium">
+                                    {customer.user.username}
                                 </td>
 
                                 <td className="px-6 py-4">

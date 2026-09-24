@@ -4,7 +4,6 @@ import { getCookie } from "@/lib/client-cookies"
 import { FormEvent, useState } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "react-toastify"
-import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -13,51 +12,70 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
 import { Field, FieldGroup } from "@/components/ui/field"
-import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
-const AddService = () => {
+type Bill = {
+  id: number
+  month: number
+  year: number
+  measurement_number: string
+  usage_value: number
+  price: number
+}
+
+const EditBill = ({
+  selectedData
+}: {
+  selectedData: Bill
+}) => {
+
   const router = useRouter()
 
   const [open, setOpen] = useState<boolean>(false)
-  const [name, setName] = useState<string>("")
-  const [min_usage, setMinUsage] = useState<number>(0)
-  const [max_usage, setMaxUsage] = useState<number>(0)
+  const [month, setMonth] = useState<number>(0)
+  const [year, setYear] = useState<number>(0)
+  const [meter, setMeter] = useState<string>("")
+  const [usageValue, setUsageValue] = useState<number>(0)
   const [price, setPrice] = useState<number>(0)
 
   const openModal = () => {
     setOpen(true)
-    setName("")
-    setMinUsage(0)
-    setMaxUsage(0)
-    setPrice(0)
+    setMonth(selectedData.month)
+    setYear(selectedData.year)
+    setMeter(selectedData.measurement_number)
+    setUsageValue(selectedData.usage_value)
+    setPrice(selectedData.price)
   }
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent) => {
     try {
       e.preventDefault()
 
       const token = await getCookie("accessToken")
-      const url = `${process.env.NEXT_PUBLIC_BASE_API_URL}/services`
+
+      const url = `${process.env.NEXT_PUBLIC_BASE_API_URL}/bills/${selectedData.id}`
 
       const payload = JSON.stringify({
-        name,
-        min_usage,
-        max_usage,
-        price,
+        month,
+        year,
+        measurement_number: meter,
+        usage_value: usageValue,
+        price
       })
 
       const response = await fetch(url, {
-        method: "POST",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           "APP-KEY": process.env.NEXT_PUBLIC_APP_KEY || "",
-          Authorization: `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`,
         },
-        body: payload,
+        body: payload
       })
 
       const result = await response.json()
@@ -65,16 +83,11 @@ const AddService = () => {
       if (result?.success) {
         toast.success(result.message)
         setOpen(false)
-
-        setName("")
-        setMinUsage(0)
-        setMaxUsage(0)
-        setPrice(0)
-
         setTimeout(() => router.refresh(), 1000)
       } else {
         toast.warning(result.message)
       }
+
     } catch (error) {
       toast.error(`Something wrong, ${error}`)
     }
@@ -83,84 +96,83 @@ const AddService = () => {
   return (
     <div>
       <Dialog open={open} onOpenChange={setOpen}>
+
         <DialogTrigger asChild>
-          <Button onClick={openModal}>
-            Add Data Service
+          <Button onClick={openModal} variant="outline">
+            Edit
           </Button>
         </DialogTrigger>
 
         <DialogContent className="sm:max-w-sm">
+
           <form onSubmit={handleSubmit}>
+
             <DialogHeader>
-              <DialogTitle>Add Service</DialogTitle>
+              <DialogTitle>Edit Bill</DialogTitle>
               <DialogDescription>
-                Tambahkan data service baru di sini. Klik save jika sudah selesai.
+                Update data bill di bawah ini
               </DialogDescription>
             </DialogHeader>
 
             <FieldGroup>
+
+              {/* MONTH */}
               <Field>
-                <Label htmlFor="name">Name</Label>
+                <Label>Bulan</Label>
                 <Input
-                  id="name"
-                  name="name"
+                  type="number"
+                  value={month}
+                  onChange={(e) => setMonth(Number(e.target.value))}
+                />
+              </Field>
+
+              {/* YEAR */}
+              <Field>
+                <Label>Tahun</Label>
+                <Input
+                  type="number"
+                  value={year}
+                  onChange={(e) => setYear(Number(e.target.value))}
+                />
+              </Field>
+
+              {/* METER */}
+              <Field>
+                <Label>No Meter</Label>
+                <Input
                   type="text"
-                  value={name}
-                  placeholder="Service Name"
-                  onChange={(e) => setName(e.target.value)}
+                  value={meter}
+                  onChange={(e) => setMeter(e.target.value)}
                 />
               </Field>
 
+              {/* USAGE */}
               <Field>
-                <Label htmlFor="price">Price</Label>
+                <Label>Usage</Label>
                 <Input
-                  id="price"
-                  name="price"
                   type="number"
-                  value={price}
-                  onChange={(e) => setPrice(Number(e.target.value))}
+                  value={usageValue}
+                  onChange={(e) => setUsageValue(Number(e.target.value))}
                 />
-              </Field>
-
-              <Field>
-                <Label htmlFor="min_usage">Min Usage</Label>
-                <Input
-                  id="min_usage"
-                  name="min_usage"
-                  type="number"
-                  value={min_usage}
-                  onChange={(e) => setMinUsage(Number(e.target.value))}
-                />
-              </Field>
-
-              <Field>
-                <Label htmlFor="max_usage">Max Usage</Label>
-                <Input
-                  id="max_usage"
-                  name="max_usage"
-                  type="number"
-                  value={max_usage}
-                  onChange={(e) => setMaxUsage(Number(e.target.value))}
-                />
-              </Field>
+              </Field>        
             </FieldGroup>
 
             <DialogFooter>
               <DialogClose asChild>
-                <Button variant="outline" type="button">
-                  Cancel
-                </Button>
+                <Button variant="outline">Cancel</Button>
               </DialogClose>
 
               <Button type="submit">
-                Save Service
+                Save changes
               </Button>
             </DialogFooter>
+
           </form>
+
         </DialogContent>
       </Dialog>
     </div>
   )
 }
 
-export default AddService
+export default EditBill

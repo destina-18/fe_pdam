@@ -29,12 +29,12 @@ export const items = [
    },
    {
       title: "Bill",
-      url: "#",
+      url: "/admin/bills",
       icon: Receipt,
    },
    {
       title: "Payments",
-      url: "#",
+      url: "/admin/payments",
       icon: Banknote,
    },
 

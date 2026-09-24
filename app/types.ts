@@ -56,5 +56,39 @@ export interface Services {
   updatedAt: string
 }
 
+export interface bills {
+  payment_proof: null
+  status: string
+  total: any
+  amount: any
+  service: any
+  customer: any
+  payments: Payments
+  id: number
+  customer_id: number
+  admin_id: number
+  month: number
+  year: number
+  measurement_number: string
+  usage_value: number
+  price: number
+  service_id: number
+  paid: boolean
+  owner_token: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface Payments {
+  id: number
+  bill_id: number
+  payment_date: string
+  verified: boolean
+  total_amount: number
+  payment_proof: string
+  owner_token: string
+  createdAt: string
+  updatedAt: string
+}
 
     
