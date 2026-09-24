@@ -2,31 +2,31 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-800 font-sans">
 
       {/* ================= HEADER ================= */}
-      <header className="sticky top-0 z-50 border-b border-blue-100 bg-white/95 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="h-20 flex items-center justify-between">
+          <div className="h-[72px] flex items-center justify-between">
 
             {/* BRAND */}
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-blue-700">
+              <h1 className="text-lg md:text-xl font-semibold tracking-tight text-slate-900">
                 PDAM Tirta Sejahtera
               </h1>
 
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-[11px] text-slate-400 mt-0.5 tracking-wide">
                 Perusahaan Daerah Air Minum
               </p>
             </div>
 
             {/* LOGIN BUTTON */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
 
               {/* LOGIN ADMIN */}
               <Link
                 href="/sign-in?role=ADMIN"
-                className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl border border-blue-600 text-blue-600 text-sm font-semibold hover:bg-blue-50 transition"
+                className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg border border-slate-200 text-slate-600 text-sm font-medium hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200"
               >
                 Login Admin
               </Link>
@@ -34,7 +34,7 @@ export default function Home() {
               {/* LOGIN CUSTOMER */}
               <Link
                 href="/sign-in?role=CUSTOMER"
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold shadow-sm hover:bg-blue-700 transition"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-all duration-200"
               >
                 Login Customer
               </Link>
@@ -49,41 +49,38 @@ export default function Home() {
       <main>
 
         {/* ================= HERO ================= */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-600 to-sky-500 text-white">
+        <section className="relative overflow-hidden bg-white">
 
           {/* DECORATION */}
-          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/10 blur-2xl" />
-
-          <div className="absolute -bottom-32 -left-20 w-80 h-80 rounded-full bg-sky-300/20 blur-3xl" />
+          <div className="absolute top-0 right-0 w-[420px] h-[420px] bg-blue-50 rounded-full blur-3xl opacity-70" />
+          <div className="absolute bottom-0 left-0 w-[320px] h-[320px] bg-sky-50 rounded-full blur-3xl opacity-70" />
 
           <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-24 md:py-32">
 
             <div className="max-w-3xl mx-auto text-center">
 
               {/* BADGE */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-7 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-7 rounded-full bg-blue-50 border border-blue-100">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
 
-                <span className="w-2 h-2 rounded-full bg-sky-200" />
-
-                <span className="text-sm font-medium text-blue-50">
+                <span className="text-xs md:text-sm font-medium text-blue-600">
                   Melayani Masyarakat dengan Sepenuh Hati
                 </span>
-
               </div>
 
 
               {/* TITLE */}
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+              <h2 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.08] text-slate-900">
                 Layanan Air Bersih
 
-                <span className="block text-sky-100 mt-2">
+                <span className="block text-blue-600 mt-2">
                   untuk Kehidupan Lebih Baik
                 </span>
               </h2>
 
 
               {/* DESCRIPTION */}
-              <p className="mt-7 text-base md:text-lg text-blue-100 leading-8 max-w-2xl mx-auto">
+              <p className="mt-7 text-base md:text-lg text-slate-500 leading-8 max-w-2xl mx-auto">
                 PDAM Tirta Sejahtera berkomitmen menyediakan layanan air bersih
                 yang berkualitas, aman, higienis, dan berkelanjutan bagi
                 seluruh masyarakat.
@@ -91,12 +88,12 @@ export default function Home() {
 
 
               {/* LOGIN BUTTON */}
-              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
 
                 {/* ADMIN */}
                 <Link
                   href="/sign-in?role=ADMIN"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-white text-blue-700 font-semibold shadow-lg shadow-blue-900/10 hover:bg-blue-50 transition"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-all duration-200"
                 >
                   Login Admin
                 </Link>
@@ -104,7 +101,7 @@ export default function Home() {
                 {/* CUSTOMER */}
                 <Link
                   href="/sign-in?role=CUSTOMER"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-xl border border-white/30 bg-white/10 text-white font-semibold backdrop-blur-sm hover:bg-white/20 transition"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-lg border border-slate-200 bg-white text-slate-700 text-sm font-medium hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200"
                 >
                   Login Customer
                 </Link>
@@ -117,65 +114,57 @@ export default function Home() {
 
 
         {/* ================= STATISTICS ================= */}
-        <section className="relative -mt-10 z-10 px-6">
+        <section className="relative z-10 px-6 -mt-6">
 
-          <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-100">
+          <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-[0_12px_40px_rgba(15,23,42,0.06)]">
 
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-slate-100">
+            <div className="grid grid-cols-2 md:grid-cols-4">
 
               {/* ITEM 1 */}
-              <div className="px-5 py-7 text-center">
-
-                <p className="text-2xl md:text-3xl font-bold text-blue-700">
+              <div className="px-5 py-7 text-center border-b md:border-b-0 md:border-r border-slate-100">
+                <p className="text-2xl md:text-3xl font-semibold text-blue-600">
                   24/7
                 </p>
 
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1.5 text-sm text-slate-500">
                   Dukungan Layanan
                 </p>
-
               </div>
 
 
               {/* ITEM 2 */}
-              <div className="px-5 py-7 text-center">
-
-                <p className="text-2xl md:text-3xl font-bold text-blue-700">
+              <div className="px-5 py-7 text-center border-b md:border-b-0 md:border-r border-slate-100">
+                <p className="text-2xl md:text-3xl font-semibold text-blue-600">
                   100%
                 </p>
 
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1.5 text-sm text-slate-500">
                   Komitmen Pelayanan
                 </p>
-
               </div>
 
 
               {/* ITEM 3 */}
-              <div className="px-5 py-7 text-center">
-
-                <p className="text-2xl md:text-3xl font-bold text-blue-700">
+              <div className="px-5 py-7 text-center border-r border-slate-100">
+                <p className="text-2xl md:text-3xl font-semibold text-blue-600">
                   Aman
                 </p>
 
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1.5 text-sm text-slate-500">
                   Air Berkualitas
                 </p>
-
               </div>
 
 
               {/* ITEM 4 */}
               <div className="px-5 py-7 text-center">
-
-                <p className="text-2xl md:text-3xl font-bold text-blue-700">
+                <p className="text-2xl md:text-3xl font-semibold text-blue-600">
                   Terpercaya
                 </p>
 
-                <p className="mt-1 text-sm text-slate-500">
+                <p className="mt-1.5 text-sm text-slate-500">
                   Untuk Masyarakat
                 </p>
-
               </div>
 
             </div>
@@ -184,25 +173,23 @@ export default function Home() {
 
 
         {/* ================= TENTANG ================= */}
-        <section className="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+        <section className="max-w-7xl mx-auto px-6 lg:px-10 py-24 md:py-28">
 
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
             {/* TEXT */}
             <div>
 
               <div className="flex items-center gap-3 mb-5">
+                <span className="w-8 h-px bg-blue-600" />
 
-                <span className="w-10 h-1 rounded-full bg-blue-600" />
-
-                <span className="text-sm font-semibold uppercase tracking-wider text-blue-600">
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">
                   Tentang Kami
                 </span>
-
               </div>
 
 
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-800 leading-tight">
+              <h3 className="text-3xl md:text-4xl font-semibold text-slate-900 leading-tight tracking-tight">
                 Menghadirkan air bersih
 
                 <span className="block text-blue-600 mt-1">
@@ -211,7 +198,7 @@ export default function Home() {
               </h3>
 
 
-              <p className="mt-6 text-slate-600 leading-8">
+              <p className="mt-6 text-slate-500 leading-8">
                 PDAM Tirta Sejahtera merupakan perusahaan daerah yang bergerak
                 dalam penyediaan dan pengelolaan air bersih bagi masyarakat.
                 Kami berfokus pada pelayanan yang profesional, pengelolaan
@@ -220,7 +207,7 @@ export default function Home() {
               </p>
 
 
-              <p className="mt-4 text-slate-600 leading-8">
+              <p className="mt-4 text-slate-500 leading-8">
                 Dengan mengutamakan kebutuhan pelanggan, kami terus berupaya
                 memberikan pelayanan yang cepat, aman, dan dapat diandalkan.
               </p>
@@ -231,18 +218,13 @@ export default function Home() {
             {/* VISUAL CARD */}
             <div className="relative">
 
-              <div className="absolute -top-5 -right-5 w-24 h-24 rounded-2xl bg-sky-100" />
-
-              <div className="absolute -bottom-5 -left-5 w-28 h-28 rounded-full bg-blue-50" />
-
-
-              <div className="relative rounded-3xl bg-gradient-to-br from-blue-600 to-sky-400 p-8 md:p-10 text-white shadow-xl shadow-blue-200">
+              <div className="relative rounded-3xl bg-gradient-to-br from-blue-600 to-sky-500 p-8 md:p-10 text-white shadow-[0_20px_50px_rgba(37,99,235,0.15)]">
 
                 {/* ICON */}
-                <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-white/15 border border-white/20 mb-8">
+                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 border border-white/15 mb-8">
 
                   <svg
-                    className="w-7 h-7"
+                    className="w-6 h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -258,25 +240,25 @@ export default function Home() {
                 </div>
 
 
-                <h4 className="text-2xl font-bold">
+                <h4 className="text-2xl font-semibold tracking-tight">
                   Air Bersih untuk Semua
                 </h4>
 
 
-                <p className="mt-4 text-blue-100 leading-7">
+                <p className="mt-4 text-blue-50 leading-7">
                   Kami percaya bahwa akses terhadap air bersih merupakan bagian
                   penting dalam menciptakan kehidupan masyarakat yang sehat dan
                   berkualitas.
                 </p>
 
 
-                <div className="mt-8 pt-6 border-t border-white/20">
+                <div className="mt-8 pt-6 border-t border-white/15">
 
                   <p className="text-sm text-blue-100">
                     Komitmen kami
                   </p>
 
-                  <p className="mt-1 font-semibold">
+                  <p className="mt-1 font-medium">
                     Profesional • Aman • Berkelanjutan
                   </p>
 
@@ -290,32 +272,32 @@ export default function Home() {
 
 
         {/* ================= LAYANAN ================= */}
-        <section className="bg-white border-y border-slate-100">
+        <section className="bg-white border-y border-slate-200/70">
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24 md:py-28">
 
             {/* TITLE */}
             <div className="text-center max-w-2xl mx-auto">
 
               <div className="flex items-center justify-center gap-3 mb-4">
 
-                <span className="w-8 h-1 rounded-full bg-blue-600" />
+                <span className="w-7 h-px bg-blue-600" />
 
-                <span className="text-sm font-semibold uppercase tracking-wider text-blue-600">
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">
                   Layanan
                 </span>
 
-                <span className="w-8 h-1 rounded-full bg-blue-600" />
+                <span className="w-7 h-px bg-blue-600" />
 
               </div>
 
 
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-800">
+              <h3 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight">
                 Layanan PDAM
               </h3>
 
 
-              <p className="mt-5 text-slate-600 leading-7">
+              <p className="mt-5 text-slate-500 leading-7">
                 Berbagai layanan untuk membantu memenuhi kebutuhan air bersih
                 dan memberikan pengalaman pelayanan yang lebih baik.
               </p>
@@ -324,15 +306,15 @@ export default function Home() {
 
 
             {/* SERVICE CARDS */}
-            <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 
               {/* CARD 1 */}
-              <div className="group rounded-2xl border border-slate-200 bg-white p-7 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50 transition duration-300">
+              <div className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-blue-200 hover:shadow-[0_12px_30px_rgba(37,99,235,0.08)] transition-all duration-300">
 
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition">
+                <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
 
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -347,7 +329,7 @@ export default function Home() {
 
                 </div>
 
-                <h4 className="mt-6 text-lg font-bold text-slate-800">
+                <h4 className="mt-5 text-base font-semibold text-slate-900">
                   Penyediaan Air Bersih
                 </h4>
 
@@ -360,12 +342,12 @@ export default function Home() {
 
 
               {/* CARD 2 */}
-              <div className="group rounded-2xl border border-slate-200 bg-white p-7 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50 transition duration-300">
+              <div className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-blue-200 hover:shadow-[0_12px_30px_rgba(37,99,235,0.08)] transition-all duration-300">
 
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition">
+                <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
 
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -380,7 +362,7 @@ export default function Home() {
 
                 </div>
 
-                <h4 className="mt-6 text-lg font-bold text-slate-800">
+                <h4 className="mt-5 text-base font-semibold text-slate-900">
                   Distribusi Air
                 </h4>
 
@@ -393,12 +375,12 @@ export default function Home() {
 
 
               {/* CARD 3 */}
-              <div className="group rounded-2xl border border-slate-200 bg-white p-7 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50 transition duration-300">
+              <div className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-blue-200 hover:shadow-[0_12px_30px_rgba(37,99,235,0.08)] transition-all duration-300">
 
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition">
+                <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
 
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -413,7 +395,7 @@ export default function Home() {
 
                 </div>
 
-                <h4 className="mt-6 text-lg font-bold text-slate-800">
+                <h4 className="mt-5 text-base font-semibold text-slate-900">
                   Pelayanan Pelanggan
                 </h4>
 
@@ -426,12 +408,12 @@ export default function Home() {
 
 
               {/* CARD 4 */}
-              <div className="group rounded-2xl border border-slate-200 bg-white p-7 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50 transition duration-300">
+              <div className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-blue-200 hover:shadow-[0_12px_30px_rgba(37,99,235,0.08)] transition-all duration-300">
 
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition">
+                <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
 
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -446,7 +428,7 @@ export default function Home() {
 
                 </div>
 
-                <h4 className="mt-6 text-lg font-bold text-slate-800">
+                <h4 className="mt-5 text-base font-semibold text-slate-900">
                   Pengaduan Gangguan
                 </h4>
 
@@ -463,50 +445,50 @@ export default function Home() {
 
 
         {/* ================= VISI MISI ================= */}
-        <section className="bg-slate-50">
+        <section className="bg-[#f8fafc]">
 
-          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-24 md:py-28">
 
             <div className="text-center max-w-2xl mx-auto mb-14">
 
               <div className="flex items-center justify-center gap-3 mb-4">
 
-                <span className="w-8 h-1 rounded-full bg-blue-600" />
+                <span className="w-7 h-px bg-blue-600" />
 
-                <span className="text-sm font-semibold uppercase tracking-wider text-blue-600">
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600">
                   Komitmen Kami
                 </span>
 
-                <span className="w-8 h-1 rounded-full bg-blue-600" />
+                <span className="w-7 h-px bg-blue-600" />
 
               </div>
 
 
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-800">
+              <h3 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight">
                 Visi & Misi
               </h3>
 
             </div>
 
 
-            <div className="grid md:grid-cols-2 gap-7">
+            <div className="grid md:grid-cols-2 gap-5">
 
               {/* VISI */}
-              <div className="bg-white rounded-2xl border border-slate-200 p-8 md:p-10 shadow-sm">
+              <div className="bg-white rounded-2xl border border-slate-200 p-7 md:p-9 hover:shadow-[0_12px_35px_rgba(15,23,42,0.05)] transition-all duration-300">
 
                 <div className="flex items-center gap-4">
 
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 font-bold">
+                  <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 font-semibold">
                     V
                   </div>
 
                   <div>
 
-                    <p className="text-sm text-blue-600 font-semibold">
+                    <p className="text-xs text-blue-600 font-semibold uppercase tracking-wider">
                       Arah Perusahaan
                     </p>
 
-                    <h4 className="text-2xl font-bold text-slate-800">
+                    <h4 className="text-xl font-semibold text-slate-900 mt-0.5">
                       Visi
                     </h4>
 
@@ -515,7 +497,7 @@ export default function Home() {
                 </div>
 
 
-                <p className="mt-7 text-slate-600 leading-8">
+                <p className="mt-7 text-slate-500 leading-8">
                   Menjadi perusahaan penyedia air bersih yang terpercaya,
                   profesional, dan berkelanjutan dalam memenuhi kebutuhan
                   masyarakat.
@@ -525,21 +507,21 @@ export default function Home() {
 
 
               {/* MISI */}
-              <div className="bg-white rounded-2xl border border-slate-200 p-8 md:p-10 shadow-sm">
+              <div className="bg-white rounded-2xl border border-slate-200 p-7 md:p-9 hover:shadow-[0_12px_35px_rgba(15,23,42,0.05)] transition-all duration-300">
 
                 <div className="flex items-center gap-4">
 
-                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-sky-50 text-sky-600 font-bold">
+                  <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-sky-50 text-sky-600 font-semibold">
                     M
                   </div>
 
                   <div>
 
-                    <p className="text-sm text-sky-600 font-semibold">
+                    <p className="text-xs text-sky-600 font-semibold uppercase tracking-wider">
                       Langkah Kami
                     </p>
 
-                    <h4 className="text-2xl font-bold text-slate-800">
+                    <h4 className="text-xl font-semibold text-slate-900 mt-0.5">
                       Misi
                     </h4>
 
@@ -548,7 +530,7 @@ export default function Home() {
                 </div>
 
 
-                <p className="mt-7 text-slate-600 leading-8">
+                <p className="mt-7 text-slate-500 leading-8">
                   Memberikan pelayanan air bersih yang berkualitas,
                   meningkatkan infrastruktur distribusi air, serta
                   mengutamakan kepuasan pelanggan melalui layanan yang cepat
@@ -563,29 +545,29 @@ export default function Home() {
 
 
         {/* ================= CTA LOGIN ================= */}
-        <section className="px-6 py-20 bg-white">
+        <section className="px-6 py-20 md:py-24 bg-white">
 
-          <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden bg-gradient-to-r from-blue-700 to-sky-500 text-white">
+          <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden bg-gradient-to-br from-blue-600 to-sky-500 text-white shadow-[0_20px_50px_rgba(37,99,235,0.12)]">
 
             <div className="px-7 py-12 md:px-14 md:py-14 text-center">
 
-              <h3 className="text-2xl md:text-3xl font-bold">
+              <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">
                 Akses Layanan PDAM
               </h3>
 
 
-              <p className="mt-4 text-blue-100 max-w-xl mx-auto leading-7">
+              <p className="mt-4 text-blue-50 max-w-xl mx-auto leading-7">
                 Silakan masuk ke akun sesuai dengan peran Anda untuk
                 mengakses layanan PDAM Tirta Sejahtera.
               </p>
 
 
-              <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+              <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
 
                 {/* ADMIN */}
                 <Link
                   href="/sign-in?role=ADMIN"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-white text-blue-700 font-semibold hover:bg-blue-50 transition shadow-lg"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white text-blue-700 text-sm font-medium hover:bg-blue-50 transition-all duration-200"
                 >
                   Login Admin
                 </Link>
@@ -594,7 +576,7 @@ export default function Home() {
                 {/* CUSTOMER */}
                 <Link
                   href="/sign-in?role=CUSTOMER"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl border border-white/30 bg-white/10 text-white font-semibold hover:bg-white/20 transition"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-white/30 bg-white/10 text-white text-sm font-medium hover:bg-white/20 transition-all duration-200"
                 >
                   Login Customer
                 </Link>
@@ -609,7 +591,7 @@ export default function Home() {
 
 
       {/* ================= FOOTER ================= */}
-      <footer className="bg-slate-900 text-white">
+      <footer className="bg-slate-950 text-white">
 
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10">
 
@@ -618,7 +600,7 @@ export default function Home() {
             {/* BRAND */}
             <div>
 
-              <h4 className="text-lg font-bold">
+              <h4 className="text-base font-semibold">
                 PDAM Tirta Sejahtera
               </h4>
 
@@ -637,7 +619,7 @@ export default function Home() {
                 Layanan Air Bersih untuk Kehidupan Lebih Baik
               </p>
 
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-2 text-xs text-slate-500">
                 © 2026 PDAM Tirta Sejahtera
               </p>
 
