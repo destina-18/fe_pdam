@@ -2,20 +2,21 @@
 
 import { storeCookie } from "@/lib/client-cookies";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 type Role = "ADMIN" | "CUSTOMER";
 
-export default function SignInPage() {
+function SignInForm() {
   const searchParams = useSearchParams();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const [role, setRole] = useState<Role>("CUSTOMER");
+
   const [loading, setLoading] = useState(false);
 
-  // Ambil role dari URL
   useEffect(() => {
     const roleFromUrl = searchParams.get("role");
 
@@ -103,10 +104,6 @@ export default function SignInPage() {
         return;
       }
 
-      /*
-       * Mendukung beberapa kemungkinan struktur
-       * response dari API.
-       */
       const token =
         responseData?.token ||
         responseData?.accessToken ||
@@ -118,56 +115,36 @@ export default function SignInPage() {
         responseData?.data?.role ||
         role;
 
-      /*
-       * Kalau API berhasil tetapi token tidak ditemukan,
-       * jangan redirect.
-       */
       if (!token) {
         console.error(
-          "Token tidak ditemukan dari response API:",
+          "TOKEN TIDAK DITEMUKAN:",
           responseData
         );
 
         alert(
-          "Login berhasil, tetapi token tidak ditemukan dari response API."
+          "Login berhasil tetapi token tidak ditemukan dari response API."
         );
 
         return;
       }
 
-      /*
-       * Pastikan role valid.
-       */
-      const finalRole =
-        responseRole === "ADMIN" || responseRole === "CUSTOMER"
-          ? responseRole
+      const finalRole: Role =
+        responseRole === "ADMIN"
+          ? "ADMIN"
+          : responseRole === "CUSTOMER"
+          ? "CUSTOMER"
           : role;
 
-      /*
-       * Simpan token.
-       */
       storeCookie("accessToken", token, 1);
-
-      /*
-       * Simpan role.
-       */
       storeCookie("role", finalRole, 1);
 
-      /*
-       * Optional:
-       * Simpan juga token dan role ke localStorage
-       * agar bisa digunakan oleh component client
-       * jika project kamu membutuhkannya.
-       */
       localStorage.setItem("accessToken", token);
       localStorage.setItem("role", finalRole);
 
-      /*
-       * Redirect berdasarkan role.
-       */
       if (finalRole === "ADMIN") {
         alert(
-          responseData?.message || "Login Admin berhasil."
+          responseData?.message ||
+            "Login Admin berhasil."
         );
 
         window.location.href = "/admin/profile";
@@ -176,7 +153,8 @@ export default function SignInPage() {
 
       if (finalRole === "CUSTOMER") {
         alert(
-          responseData?.message || "Login Customer berhasil."
+          responseData?.message ||
+            "Login Customer berhasil."
         );
 
         window.location.href = "/customer/dashboard";
@@ -198,15 +176,10 @@ export default function SignInPage() {
   function changeRole(newRole: Role) {
     setRole(newRole);
 
-    /*
-     * Mengubah URL tanpa reload halaman.
-     */
-    const newUrl = `/sign-in?role=${newRole}`;
-
     window.history.replaceState(
       null,
       "",
-      newUrl
+      `/sign-in?role=${newRole}`
     );
   }
 
@@ -250,10 +223,9 @@ export default function SignInPage() {
 
           </div>
 
-          {/* FORM AREA */}
+          {/* FORM */}
           <div className="p-8">
 
-            {/* TITLE */}
             <div className="mb-7">
 
               <h2 className="text-2xl font-bold text-slate-800">
@@ -375,7 +347,7 @@ export default function SignInPage() {
 
             </form>
 
-            {/* BACK TO HOME */}
+            {/* BACK */}
             <div className="mt-7 text-center">
 
               <Link
@@ -398,5 +370,25 @@ export default function SignInPage() {
       </div>
 
     </div>
+  );
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-50 to-blue-100 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-10 h-10 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto" />
+
+            <p className="mt-4 text-sm text-slate-500">
+              Memuat halaman login...
+            </p>
+          </div>
+        </div>
+      }
+    >
+      <SignInForm />
+    </Suspense>
   );
 }
